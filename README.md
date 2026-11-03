@@ -26,3 +26,10 @@ The parser accepts a `clock` callable so tests (and offline environments) are de
 - `"0"` is accepted and yields a zero delay.
 - Fractional seconds (`"120.5"`) are rejected. RFC 7231 specifies integer delta-seconds, and accepting floats would imply a precision the protocol does not guarantee.
 - Only the IMF-fixdate date format (the RFC 7231 preferred form) is reliably supported via Python's `email.utils.parsedate_to_datetime`.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
