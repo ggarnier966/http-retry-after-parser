@@ -1,6 +1,6 @@
 [project]
 name = "http-retry-after-parser"
-version = "0.1.0"
+version = "0.1.1"
 description = "Parses HTTP Retry-After headers into second-based delays from either date or seconds format."
 requires-python = ">=3.10"
 dependencies = []
